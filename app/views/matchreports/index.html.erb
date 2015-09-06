@@ -1,0 +1,36 @@
+<table class="pure-table pure-table-bordered" id="mytable">
+  <thead>
+    <tr id="mythead">
+      <th colspan="6" ><a>Match Report</a> </th>
+    </tr>
+    <tr id="mythead">
+      <th>Title</th>
+      <th>Content</th>
+      <th>Writer</th>
+      <th colspan="3">Can Add New Match Report
+      <%= link_to 'Here!',  new_matchreport_path, :class=>"pure-button pure-button-primary"  %> 
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matchreports.each do |matchreport| %>
+      <tr>
+        <td><%= matchreport.title %></td>
+        <td><%= matchreport.content[0,50] %>...</td>
+        <td><%= matchreport.writer %></td>
+        <td><%= link_to 'Show', matchreport ,:class=>"button-error pure-button" %>
+        </td>
+        <td><%= link_to 'Edit', edit_matchreport_path(matchreport),:class=>"button-error pure-button" %></td>
+        <td><%= link_to 'Destroy', matchreport, method: :delete, data: { confirm: 'Are you sure?' },:class=>"button-error pure-button" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<div class="bpaginate">
+    <%=  will_paginate @v_posts %>
+</div>

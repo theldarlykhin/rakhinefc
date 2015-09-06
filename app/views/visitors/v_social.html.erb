@@ -1,0 +1,53 @@
+<section id="bc-t">
+		<div class="container">
+		<ul class="breadcrumb1">
+			<li><a href="/index">Homepage</a></li><li><span class="sep">   /   </span></li><li><a href="/social">Social</a></li>
+		</ul>
+		
+		<h1 class="blog-title">Social</h1>
+		</div>
+	</section><br/>
+    <!-- Content Section. If need sidebars use the tag: <aside>. If articles use tag: <article> -->
+    <section id="gallery-grid">
+		<div class="container">
+			
+			<!-- blog menu end -->
+			<!-- gallery -->
+			<div class="gallery-item isotope js-isotope" data-isotope-options='{ "itemSelector": ".gal", "masonry": { "columnWidth": ".col-3" } }'>
+				<% @v_socials.order("created_at DESC").each do |social| %>
+					<div class="gal col-6">
+						<a href="#" data-toggle="modal" data-target="#myModal-<%= social.id %>">
+							  <%= image_tag(social.avatar.url(:medium), :class => "glphoto") %>
+							</a> 
+							<!-- Modal -->
+							<div class="modal fade" id="myModal-<%= social.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							        	<%= image_tag(social.avatar.url(:medium), :id => social.id, :class => "glphoto") %>
+							        <p style="align:justify;color:black;text-align:center;font-size:1.5em;"><%= social.title %></p>
+							     	<p style="align:justify;color:black;text-align:center;"><%= social.data %></p>
+							    </div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->
+					</div>
+				<% end %>
+			</div>
+			
+			<!-- PAGINATION -->
+			<div class="pagination">
+				<%=  will_paginate @v_socials%>
+			</div>
+		</div>
+	</section>
+	<section id="partner">
+	<div class="container">
+       	<div class="p-l">
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+		</div>
+	</div>
+	</section>

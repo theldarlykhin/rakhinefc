@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rakhine United FC</title>
+
+  <link rel="shortcut icon" href="<%= asset_path 'fav.png'%>">
+
+  <%= stylesheet_link_tag   'pure-min.css' %>
+  <%= stylesheet_link_tag 'style.css' %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'swfobject' %> 
+  <%= csrf_meta_tags %>
+	
+</head>
+
+<body>
+<div id="color_bar"></div>
+<br/>
+    <div class="pure-g">
+
+        <div class="pure-u-1-4" style="position:relative;left:5px;width:20%;">
+         <% if user_signed_in? %>
+              <div class="pure-menu pure-menu-open">
+                    <a class="pure-menu-heading">Rakhine United FC</a>
+                    <ul>
+                        <li><a href="/clubs">Official</a></li>
+                        <li><a href="/galleries">Gallery</a></li>
+                        <li><a href="/player_teams">Player</a></li>
+                        <li><a href="/posts">Post</a></li>
+                        <li><a href="/videos">Video</a></li>
+                        <li><a href="/socials">Social Activity</a></li>
+                        <li><a href="/standings/1">Standing</a></li>
+                        <li><a href="/matches">Match</a></li>
+                        <li><a href="/matchreports">After Match Report</a></li>
+                        <li><a href="/mnlteams">MNL Team</a></li>
+                        <li><%= link_to "Account Setting", edit_user_registration_path %></li>
+                        <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
+        
+
+                    </ul>
+                </div>
+         <% end %>
+        </div>
+        <div class="pure-u-3-4">
+            <%= yield %>
+        </div>
+    </div>
+
+    
+
+
+
+
+<div id="footer">
+  <p id="hntinfo">RUFC: Content Management System.Produced By H&Ttechs.</p>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rakhinefc</title>
+
+  <link rel="shortcut icon" href="<%= asset_path 'fav.png'%>">
+  
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  
+
+  <%= javascript_include_tag "modernizr-2.5.3.min.js" %>
+  
+    <!-- Libs -->
+    <%= javascript_include_tag "jquery-1.10.2.min.js" %>
+    <%= javascript_include_tag "jquery.flexslider-min.js" %>
+	<%= javascript_include_tag "jquery-ui.js" %>
+	<%= javascript_include_tag "jquery.bxslider.min.js" %>
+    <!-- Custom -->
+    <%= javascript_include_tag "scripts.js" %>
+  <%= javascript_include_tag "bootstrap.js" %>
+      
+  <%= csrf_meta_tags %>
+
+  <%= javascript_include_tag 'swfobject' %> 
+
+
+</head>
+<body>
+   <header>
+		<div class="top">
+			<div class="container">
+				<div class="col-12">
+				  <div class="col-2">
+					<div class="logo"><a href="/index"><%= image_tag("logo.png") %></a></div>
+				  </div>
+					<nav id="top-menu">
+						<ul class="clearfix">
+							<li><a href="/index">Home</a></li>
+							<li ><a href="/team">Team</a></li>
+							<li ><a href="/video">Video</a></li>
+							<li class="dropdown" ><a>News</a>
+								<ul class="dropdown-menu">
+									<li><a href="/post">Latest News</a></li>
+									<li><a href="/matchreport">After Match Report</a></li>
+									<li><a href="/social">Social Activity</a></li>
+								</ul>
+							</li>
+							<li><a href="/club">Club</a></li>
+							<li><a href="/gallery">Gallery</a>
+							</li>
+							<li><a href="/contact">Contact</a></li>
+						</ul>
+						<a href="#" id="pull">Menu</a>
+					</nav>
+                    <nav class="mobilemenu">
+                        <select id="mobiselect">
+                            <option value="/index" id="mobihome">Home</option>
+                            <option value="/team">Team</option>
+                            <option value="/video">Video</option>
+                            <option value="/post">Latest News</option>
+                            <option value="/matchreport">After Match Report</option>
+                            <option value="/social">Social Activity</option>
+                            <option value="/club">Club</option>
+                            <option value="/gallery">Gallery</option>
+                            <option value="/contact">Contact</option>
+                        </select>
+                    </nav>
+					
+				</div>
+			</div>
+		</div>
+    </header>
+
+    
+<%= yield %>
+
+
+
+    <!-- Footer Section -->
+    <footer>
+		<div class="container">
+			<div class="col-2"><a href="/index"><%= image_tag("footer_logo.png") %></a></div>
+			<div class="col-8">
+				<p>Founded as Rakhine United FC Football Club is a professional football club, based in Rakhine State, that plays in the Myanmar National League. Rakhine United Football Club in 2009, the club changed its name to Rakhapura United in December,2010. Home Stadium to use Waytharli Yinpyin in Sittwe Township, Rakhine State.</p>
+			<div class="col-4">
+				<div class="social-icon">
+					<ul id="social">
+						<li><a href="#"><%= image_tag("soc-twitter.png") %></a></li>
+						<li><a href="https://www.facebook.com/pages/Rakhine-United-Football-Club/116855348487135"><%= image_tag("soc-facebook.png") %></a></li>
+						<li><a href="#"><%= image_tag("soc-g.png") %></a></li>
+						<li><a href="#"><%= image_tag("soc-play.png") %></a></li>
+					</ul>
+				</div>
+			</div><div class="col-6"><p class="copyright">H&T techs - Produce an App for Others is Worth Living. </p></div>
+			</div>
+			
+		</div>
+    </footer>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1394546790847406&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+</body>
+</html>
+
+
+<script>
+$("#mobiselect").click(function() {
+	var aok = $("#mobiselect option:selected").text();
+	if(aok == "Home") {
+		window.location = '/index';
+	}
+});
+
+</script>
+

@@ -1,0 +1,458 @@
+  <%= form_for @standing, :html => {:class =>"pure-form pure-form-aligned", :multipart => true } do |f| %>
+
+<table class="pure-table pure-table-bordered" id="mytable" style="width:95%;">
+  <thead>
+    <tr id="mythead">
+      <th colspan="12" style="border-right:1px solid #cbcbcb;" ><a>Standings</a> </th>
+    </tr>
+    <tr id="mythead">
+      <th>Team</th>
+      <th>Pld</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
+      <th>Gf</th>
+      <th>Ga</th>
+      <th>Gd</th>
+      <th>Pts</th>
+      <th>Qualification</th>
+      <th>
+      <button type="submit" class="button-error pure-button">Save</button>
+
+      </th>
+    </tr>
+  </thead>
+
+<tbody>
+
+
+
+  <tr>
+    <td>
+      <%= f.select :team_name1, Mnlteam.all.collect { |c| [c.name, c.name] }  %>
+    </td>
+
+    <td>
+      <%= f.text_field :pld1, :placeholder => "Pld", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :w1, :placeholder => "W", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :d1, :placeholder => "D", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :l1, :placeholder => "L", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gf1, :placeholder => "GF", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :ga1, :placeholder => "GA", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gd1, :placeholder => "GD", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :pts1, :placeholder => "Pts", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :qualification1, :placeholder => "Qualification", :class =>"standing_input" %>
+    </td>
+    <td></td>
+  </tr>
+
+  <!-- 2 -->
+    <tr>
+    <td>
+      <%= f.select :team_name2, Mnlteam.all.collect { |c| [c.name, c.name] }  %>
+    </td>
+
+    <td>
+      <%= f.text_field :pld2, :placeholder => "Pld", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :w2, :placeholder => "W", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :d2, :placeholder => "D", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :l2, :placeholder => "L", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gf2, :placeholder => "GF", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :ga2, :placeholder => "GA", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gd2, :placeholder => "GD", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :pts2, :placeholder => "Pts", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :qualification2, :placeholder => "Qualification", :class =>"standing_input" %>
+    </td>
+    <td></td>
+  </tr>
+  <!--  -->
+    <tr>
+    <td>
+      <%= f.select :team_name3, Mnlteam.all.collect { |c| [c.name, c.name] }  %>
+    </td>
+
+    <td>
+      <%= f.text_field :pld3, :placeholder => "Pld", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :w3, :placeholder => "W", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :d3, :placeholder => "D", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :l3, :placeholder => "L", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gf3, :placeholder => "GF", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :ga3, :placeholder => "GA", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gd3, :placeholder => "GD", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :pts3, :placeholder => "Pts", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :qualification3, :placeholder => "Qualification", :class =>"standing_input" %>
+    </td>
+    <td></td>
+  </tr>
+
+    <tr>
+    <td>
+      <%= f.select :team_name4, Mnlteam.all.collect { |c| [c.name, c.name] }  %>
+    </td>
+
+    <td>
+      <%= f.text_field :pld4, :placeholder => "Pld", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :w4, :placeholder => "W", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :d4, :placeholder => "D", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :l4, :placeholder => "L", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gf4, :placeholder => "GF", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :ga4, :placeholder => "GA", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gd4, :placeholder => "GD", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :pts4, :placeholder => "Pts", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :qualification4, :placeholder => "Qualification", :class =>"standing_input" %>
+    </td>
+    <td></td>
+  </tr>
+
+    <tr>
+    <td>
+      <%= f.select :team_name5, Mnlteam.all.collect { |c| [c.name, c.name] }  %>
+    </td>
+
+    <td>
+      <%= f.text_field :pld5, :placeholder => "Pld", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :w5, :placeholder => "W", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :d5, :placeholder => "D", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :l5, :placeholder => "L", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gf5, :placeholder => "GF", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :ga5, :placeholder => "GA", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gd5, :placeholder => "GD", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :pts5, :placeholder => "Pts", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :qualification5, :placeholder => "Qualification", :class =>"standing_input" %>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= f.select :team_name6, Mnlteam.all.collect { |c| [c.name, c.name] }  %>
+    </td>
+
+    <td>
+      <%= f.text_field :pld6, :placeholder => "Pld", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :w6, :placeholder => "W", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :d6, :placeholder => "D", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :l6, :placeholder => "L", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gf6, :placeholder => "GF", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :ga6, :placeholder => "GA", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gd6, :placeholder => "GD", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :pts6, :placeholder => "Pts", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :qualification6, :placeholder => "Qualification", :class =>"standing_input" %>
+    </td>
+    <td></td>
+  </tr>
+
+    <tr>
+    <td>
+      <%= f.select :team_name7, Mnlteam.all.collect { |c| [c.name, c.name] }  %>
+    </td>
+
+    <td>
+      <%= f.text_field :pld7, :placeholder => "Pld", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :w7, :placeholder => "W", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :d7, :placeholder => "D", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :l7, :placeholder => "L", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gf7, :placeholder => "GF", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :ga7, :placeholder => "GA", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gd7, :placeholder => "GD", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :pts7, :placeholder => "Pts", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :qualification7, :placeholder => "Qualification", :class =>"standing_input" %>
+    </td>
+    <td></td>
+  </tr>
+
+    <tr>
+    <td>
+      <%= f.select :team_name8, Mnlteam.all.collect { |c| [c.name, c.name] }  %>
+    </td>
+
+    <td>
+      <%= f.text_field :pld8, :placeholder => "Pld", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :w8, :placeholder => "W", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :d8, :placeholder => "D", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :l8, :placeholder => "L", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gf8, :placeholder => "GF", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :ga8, :placeholder => "GA", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gd8, :placeholder => "GD", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :pts8, :placeholder => "Pts", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :qualification8, :placeholder => "Qualification", :class =>"standing_input" %>
+    </td>
+    <td></td>
+  </tr>
+
+
+    <tr>
+    <td>
+      <%= f.select :team_name9, Mnlteam.all.collect { |c| [c.name, c.name] }  %>
+    </td>
+
+    <td>
+      <%= f.text_field :pld9, :placeholder => "Pld", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :w9, :placeholder => "W", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :d9, :placeholder => "D", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :l9, :placeholder => "L", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gf9, :placeholder => "GF", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :ga9, :placeholder => "GA", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gd9, :placeholder => "GD", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :pts9, :placeholder => "Pts", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :qualification9, :placeholder => "Qualification", :class =>"standing_input" %>
+    </td>
+    <td></td>
+  </tr>
+
+    <tr>
+    <td>
+      <%= f.select :team_name10, Mnlteam.all.collect { |c| [c.name, c.name] }  %>
+    </td>
+
+    <td>
+      <%= f.text_field :pld10, :placeholder => "Pld", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :w10, :placeholder => "W", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :d10, :placeholder => "D", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :l10, :placeholder => "L", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gf10, :placeholder => "GF", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :ga10, :placeholder => "GA", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gd10, :placeholder => "GD", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :pts10, :placeholder => "Pts", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :qualification10, :placeholder => "Qualification", :class =>"standing_input" %>
+    </td>
+    <td></td>
+  </tr>
+
+    <tr>
+    <td>
+      <%= f.select :team_name11, Mnlteam.all.collect { |c| [c.name, c.name] }  %>
+    </td>
+
+    <td>
+      <%= f.text_field :pld11, :placeholder => "Pld", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :w11, :placeholder => "W", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :d11, :placeholder => "D", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :l11, :placeholder => "L", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gf11, :placeholder => "GF", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :ga11, :placeholder => "GA", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gd11, :placeholder => "GD", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :pts11, :placeholder => "Pts", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :qualification11, :placeholder => "Qualification", :class =>"standing_input" %>
+    </td>
+    <td></td>
+  </tr>
+
+    <tr>
+    <td>
+      <%= f.select :team_name12, Mnlteam.all.collect { |c| [c.name, c.name] }  %>
+    </td>
+
+    <td>
+      <%= f.text_field :pld12, :placeholder => "Pld", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :w12, :placeholder => "W", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :d12, :placeholder => "D", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :l12, :placeholder => "L", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gf12, :placeholder => "GF", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :ga12, :placeholder => "GA", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :gd12, :placeholder => "GD", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :pts12, :placeholder => "Pts", :class =>"standing_input"  %>
+    </td>
+    <td>
+      <%= f.text_field :qualification12, :placeholder => "Qualification", :class =>"standing_input" %>
+    </td>
+    <td></td>
+  </tr>
+
+
+  </tbody>
+</table>
+
+
+<% end %>
+

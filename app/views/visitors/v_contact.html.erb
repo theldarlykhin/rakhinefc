@@ -1,0 +1,51 @@
+<section id="bc-t">
+		<div class="container">
+		<ul class="breadcrumb1">
+			<li><a href="/index">Homepage</a></li><li><span class="sep">   /   </span></li><li><a href="/contact">Contact</a></li>
+		</ul>
+		
+		<h1 class="blog-title">Contact</h1>
+		</div>
+	</section><br/>
+    <!-- Content Section. If need sidebars use the tag: <aside>. If articles use tag: <article> -->
+	
+    <section id="blog-grid">
+		<div class="container">
+			<div class="col-8 cinfo">
+				<%= image_tag("group_photo.jpeg") %>
+				<div class="di-wrap">
+					<p class="detinfo"><span>Phone </span>09-42597153</p>
+					<p class="detinfo"><span>E-mail </span>info@rakhineutd.com</p>
+					<p class="detinfo"><span>Adress</span>No.(755), Ground Foor, MarLarNwe Street, Myittar Nyunt Ward,</p>
+					<p class="detinfo" style="text-indent:3.5em">Tarmwe Township, Yangon, Myanmar.</p>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="contact-form">
+				<h3>Contact form</h3>
+					<%= form_for(@visitor) do |f| %>
+						<%= f.text_field :name, :required => true, :class => "text", :placeholder =>"Your Name Here", :class =>"col-12" %>
+						<%= f.text_field :email, :required => true, :class => "text", :placeholder =>"Your Email Here", :class =>"col-12" %>
+						<%= f.text_area :message, :required => true, :class => "text", :placeholder =>"Your Message Here", :class =>"col-12"  %>
+						<div class="bottom-form"><button class="btn-dflt btn-red"><%= f.submit "Send", :id =>"btn" %></button></div>
+					<% end %>
+				</div>
+			</div>
+	</div>
+	</section>
+	<section id="map">
+			<iframe id="map_canvas" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3819.257213983642!2d96.177003!3d16.8135912!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eccbd72d804f%3A0xa388614af31f7c95!2sMalar+Nwe+St%2C+Yangon%2C+Republic+of+the+Union+of+Myanmar!5e0!3m2!1sen!2s!4v1419919987853"></iframe>
+	</section>
+	
+<section id="partner">
+	<div class="container">
+       	<div class="p-l">
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+		</div>
+	</div>
+	</section>

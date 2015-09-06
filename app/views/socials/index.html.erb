@@ -1,0 +1,38 @@
+
+<table class="pure-table pure-table-bordered" id="mytable">
+  <thead>
+    <tr id="mythead">
+      <th colspan="5" ><a>Social Activity</a> </th>
+    </tr>
+    <tr id="mythead">
+      <th>Title</th>
+      <th>Content</th>
+      <th colspan="3">Can Add New Social
+      <%= link_to 'Here!',  new_social_path, :class=>"pure-button pure-button-primary"  %> 
+      </th>
+    </tr>
+  </thead>
+
+   <tbody>
+    <% @socials.each do |social| %>
+      <tr>
+        <td><%= social.title %></td>
+        <td><%= social.data[0,50] %>...</td>
+        <td><%= link_to 'Show', social ,:class=>"button-error pure-button" %>
+        </td>
+        <td><%= link_to 'Edit', edit_social_path(social),:class=>"button-error pure-button" %></td>
+        <td><%= link_to 'Destroy', social, method: :delete, data: { confirm: 'Are you sure?' },:class=>"button-error pure-button" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+<div class="bpaginate">
+    <%=  will_paginate @v_posts %>
+</div>
+
+

@@ -1,0 +1,45 @@
+
+<div id="myinfo">
+  <div class="pure-menu pure-menu-open" >
+      <a class="pure-menu-heading">Account Setting</a>
+          
+              <a class="pure-menu-heading">
+                          
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :class => "pure-form pure-form-aligned" }) do |f| %>
+                
+                <%= devise_error_messages! %>
+
+                <div class="pure-control-group">
+                    <%= f.label :email %>
+                    <%= f.email_field :email, autofocus: true %>
+                </div>
+
+                          
+                <div class="pure-control-group">
+                     <%= f.label :new_password %> 
+                     <%= f.password_field :password, autocomplete: "off" %>
+                     <i>(leave blank if you don't want to change it)</i>
+                </div>
+
+                <div class="pure-control-group">
+                     <%= f.label :confirm_password %>
+                     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                </div>
+
+                <div class="pure-control-group">
+                      <%= f.label :current_password %> 
+                      <%= f.password_field :current_password, autocomplete: "off" %>
+                      <i>(we need your current password to confirm your changes)</i>
+                </div>
+
+                <div class="pure-controls">
+                      <button type="submit" class="pure-button pure-button-primary">Submit</button>
+                </div>
+                
+                <% end %>
+  
+      </a>
+
+
+</div>
+</div>

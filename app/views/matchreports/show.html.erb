@@ -1,0 +1,28 @@
+
+
+ <div id="myinfo">
+ <div class="pure-menu pure-menu-open" >
+                    <a class="pure-menu-heading">Match Report Info
+
+                    </a>
+                    <a class="pure-menu-heading">
+                        <% if @matchreport.avatar_file_name.nil?%>
+                            <%= image_tag "player.jpg", :id =>"play_pic" %>
+                        <% else %>
+                            <%= image_tag @matchreport.avatar.url(:medium) %>
+                        <% end %>
+                    </a>
+                    <ul>
+                        <li><a>Title: <%= @matchreport.title %></a></li>
+                        <li><p id="cusp">Content: <%= @matchreport.content %></p></li>
+                        <li><a>Writer: <%= @matchreport.writer %></a></li>
+                        
+                    </ul>
+
+</div>
+
+<br/>
+<%= link_to 'Edit',  edit_matchreport_path(@matchreport), :class=>"pure-button pure-button-primary"  %> 
+
+<%= link_to 'Back',  matchreports_path, :class=>"pure-button pure-button-primary" %>
+</div>

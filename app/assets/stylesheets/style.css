@@ -1,0 +1,274 @@
+#color_bar{
+
+	width: 100%;
+	background-color: #CC0000;
+
+}
+
+
+#footer {
+	width:100%;
+	height:150px;
+	position:relative;
+	bottom:0;
+	left:0;
+	background-color: #CC0000;
+	top: 120px;
+	text-align: center;
+
+
+}
+
+
+
+
+#header{
+	position: relative;
+	left: 200px;
+
+}
+
+
+
+#player_border{
+
+	 border-style: solid;
+    border-color: red;
+}
+
+
+#play_pic{
+	position: relative;
+	left: 20px;
+}
+
+#play_title{
+	position: relative;
+	left: 25px;
+}
+
+#play_desc{
+	position: relative;
+	left: 25px;	
+	color: black;
+	width: 800px;
+	border-radius: 5px;
+}
+
+
+
+
+#mythead{
+	color: #565d64;
+	text-transform: uppercase;
+	font-size: 90%;
+	margin-top: .5em;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #dfdfdf;
+	background: white;
+	height:40px;
+	text-align: left;
+	font-weight: normal;
+	font-family: sans-serif;
+}
+
+
+#mytable{
+	position: relative;
+	left: 20px;
+	width: 90%;
+}
+
+
+#myinfo{
+	position: relative;
+	left: 20px;
+	width: 90%;
+
+}
+
+
+
+#cusp{
+  text-align:justify;
+  color: #777;
+  padding:5px 20px;
+}
+#cusp:hover{
+	background: #eee;
+}
+
+#mythead th {
+
+	border-right:1px solid #cbcbcb;
+}
+
+
+.pagination{
+display: inline-block;
+padding-left: 0;
+margin: 20px 0;
+border-radius: 4px;
+display: block;
+line-height: 50px;
+border-bottom: 2px solid transparent;
+color: #4c6d8e;
+font-weight: 700;
+padding: 0px 15px;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+.pagination a{
+
+padding-left: 10px;
+padding-right: 10px;
+
+}
+
+.current{
+	font-style: normal;
+}
+
+
+.next_page{
+	float: right;
+}
+
+.next_page{
+	float: right;
+}
+
+.previous_page{
+	float: left;
+}
+
+	.postText{
+		color: white;
+	}
+
+
+.standing_input{
+	width: 50px;
+}
+
+#standing_team_name1{
+	width: 70px;
+
+}
+
+
+.bpaginate {
+	width:95%;
+}
+
+.bpaginate span {
+	color: #0078e7;
+}
+
+.bpaginate em, a {
+	color: #0078e7;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#hntinfo{
+	color: white;
+	font-size: 20px;
+}
+
+
+
+#RakhineUnited{
+		border-style: solid;
+        border-width: 5px;
+        border-color: #bea200;
+	}
+
+
+	#rufcstand{
+
+
+
+	}
+
+	
+	#standtable{
+		color: white;
+		background-color: #4c6d8e;
+		
+	}
+
+	#myModalLabel{
+		color: black;
+
+	}
+
+	#rakhine{
+		border-style: solid;
+	    border-width: 5px;
+	    border-color: #bea200;
+	}
+
+
+	#myplayer{
+		height: 170px;
+		width: 157px;
+		background-color: white;
+
+	}
+
+	#Coaches{
+		height: 170px;
+		width: 157px;
+
+	}
+
+
+div {
+	 word-wrap:break-word;
+}
+
+
+.myp {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2; /* number of lines to show */
+   line-height: 1.5em;        /* fallback */
+   max-height: 3em;       /* fallback */
+}
+
+#match_number{
+font-size: 14px;
+}
+
+
+#img_stand{
+	height: 25px;
+	width: 25px;
+}
+
+
+#standing_team_name1,
+#standing_team_name2,
+#standing_team_name3,
+#standing_team_name4,
+#standing_team_name5,
+#standing_team_name6,
+#standing_team_name7,
+#standing_team_name8,
+#standing_team_name9,
+#standing_team_name10,
+#standing_team_name11,
+#standing_team_name12{
+	width: 210px;
+}
+
+
+.standing_upload{
+	width: 150px;
+}

@@ -1,0 +1,31 @@
+
+
+<div id="myinfo">
+ <div class="pure-menu pure-menu-open" >
+                    <a class="pure-menu-heading">Post Info
+
+                    </a>
+                    <a class="pure-menu-heading">
+                      <% if @post.avatar_file_name.nil?%>
+                        <%= image_tag "player.jpg", :id =>"play_pic" %>
+                     <% else %>
+                         <%= image_tag @post.avatar.url(:medium) %>
+                     <% end %>
+                    </a>
+                    <ul>
+                      
+                        <li><a>Name: <%= @post.title%></a></li>
+                        <li><p id="cusp">Content: <%= @post.post_data %></p></li>
+                        <li><a>writer: <%= @post.writer %></a></li>
+                        
+                    </ul>
+
+</div>
+
+<br/>
+<%= link_to 'Edit',  edit_post_path(@post), :class=>"pure-button pure-button-primary"  %> 
+
+<%= link_to 'Back',  posts_path, :class=>"pure-button pure-button-primary" %>
+</div>
+
+

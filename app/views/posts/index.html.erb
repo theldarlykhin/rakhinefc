@@ -1,0 +1,35 @@
+<table class="pure-table pure-table-bordered" id="mytable">
+  <thead>
+    <tr id="mythead">
+      <th colspan="4" ><a>Post</a> </th>
+    </tr>
+    <tr id="mythead">
+      <th>Title</th>
+      <th colspan="3">Can Add New Post
+      <%= link_to 'Here!',  new_post_path, :class=>"pure-button pure-button-primary"  %> 
+      </th>
+    </tr>
+  </thead>
+
+   <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= link_to 'Show', post ,:class=>"button-error pure-button" %>
+        </td>
+        <td><%= link_to 'Edit', edit_post_path(post),:class=>"button-error pure-button" %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' },:class=>"button-error pure-button" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+<div class="bpaginate">
+    <%=  will_paginate @v_posts %>
+</div>
+
+

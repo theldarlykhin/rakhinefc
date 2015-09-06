@@ -1,0 +1,543 @@
+	<div class="slider">
+		<div class="flexslider">
+
+			<ul class="slides">
+			
+				<li>
+					<%= image_tag("cover_photo.jpeg",  :alt => "", :style => "opacity: 0.4;filter: alpha(opacity=40); /* For IE8 and earlier */") %>
+					<div class="caption">
+					<div id="dmarq">
+					
+						<marquee id="marq">
+								<%= link_to @post.post_data, v_post_single_path(:id =>@post.id) %>
+						</marquee>
+					</div>
+					</div>
+				</li>
+		
+			</ul>
+		</div>
+	</div>
+
+
+   <section id="m-a-n">
+	<div class="container">
+		<div class="col-8">
+			<div class="tab">matches</div>
+			<div class="match">
+				<% @mymatchs.each do |mymatch| %>
+					<div class="col-6">
+						<div class="m-img">
+								<% if mymatch.avatar_file_name.nil? %>
+									<div>
+										<%= image_tag ("notavalable.png") %>
+									</div>	
+								<% else %>
+									<div>
+										<%= image_tag(mymatch.avatar.url(:thumb)) %>
+									</div>
+								<% end %>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="m-img">
+								<% if mymatch.avatar_file_name.nil? %>
+									<div>
+										<%= image_tag ("notavalable.png") %>
+									</div>	
+								<% else %>
+									<div>
+										<%= image_tag(mymatch.avatar2.url(:thumb)) %>
+									</div>
+								<% end %>
+						</div>
+					</div>
+				<% end %>
+					<div class="m-result">
+						<% @mnlteams.each do |mnlteam| %>
+							<div id="<%= mnlteam.name.gsub(/\s+/, "") %>-avatar1" style="display:none;" class="logo-club col-3">
+								<%= image_tag mnlteam.avatar.url(:medium) rescue "-" %>
+							</div>
+							<script type="text/javascript">
+								$("<%= '#'+@match.team1.gsub(/\s+/, "")+'-avatar1' rescue "-" %>").show();
+								$("<%= '#'+@match.team2.gsub(/\s+/, "")+'-avatar1' rescue "-" %>").hide();
+							</script>
+						<% end %>
+
+							<span class="result col-6">
+										<%= @match.goal1 rescue "-" %> <b>:</b> <%= @match.goal2  rescue "-"%>
+							</span>
+
+						<% @mnlteams.each do |mnlteam| %>
+							<div id="<%= mnlteam.name.gsub(/\s+/, "") %>-avatar2" style="display:none;" class="logo-club col-3">
+								<%= image_tag mnlteam.avatar.url(:medium) rescue "-" %>
+							</div>
+							<script type="text/javascript">
+								$("<%= '#'+@match.team1.gsub(/\s+/, "")+'-avatar2' rescue "-" %>").hide();
+								$("<%= '#'+@match.team2.gsub(/\s+/, "")+'-avatar2' rescue "-" %>").show();
+							</script>
+						<% end %>
+					
+						<div class="club-name col-12">
+							<span class="col-3"><%= @match.team1 rescue "-" %></span>
+							<div class="match-name col-6"><%= @match.league rescue "-" %><br> match <br> <b> <%= @match.date.strftime("%b %d %y")  rescue "-" %></b>
+							</div>
+							<span class="col-3"><%= @match.team2 rescue "-" %></span>
+						</div>
+					</div>
+				
+			</div>
+			<div class="a-games">
+				<ul class="clearfix" id="myul">
+					<% @v_match.each do |match| %>
+						<li><h1 id="match_number">Match <%= match.match_number %></h1></li>
+						<li>
+
+						<span class="text-right"><%= match.team1 %></span>
+						<span class="d-g">
+						<%= match.date.strftime("%d %b") rescue "-" %>&nbsp;<%= match.time %>
+						</span>
+						<span class="text-left">
+						<%= match.team2 rescue "-" %>
+						</span>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="tab">news</div>
+			<div class="r-box-n">
+				<% @v_posts.each do |post| %>
+					<article>
+						<h3><%= link_to post.title, v_post_single_path(:id =>post.id) %></h3>
+						<p class="myp"><%= post.post_data rescue "-" %></p>
+						<span class="date-n"><%= post.created_at.strftime("%d %b") rescue "-" %></span>
+					</article>
+				<% end %>
+			</div>
+		</div>
+    </div>
+	</section>
+	<section id="video">
+	<div class="container">
+		
+		<div id="v-tabs">
+			
+			<ul class="clearfix col-4">
+			 <% @videos.each do |video| %> 
+            	<li><a href="#section-<%= video.id %>" style="height:53px;"><%= video.desc.gsub('{"desc"=>"', '').gsub('"}', '') rescue "-" %><span>video/flv</span></a>
+            	</li>
+             <% end %>
+			</ul>
+			
+			<% @videos.each do |video| %>
+			<a href="/rfcvideo/<%= video.id  %>">
+				<div id="section-<%= video.id %>" class="tab-content col-8">
+					<%= video_player({:file => video.video_file_name}) rescue "-" %>
+				</div>
+			</a>
+			<% end %>
+			
+		</div>
+		<div class="players">
+			<div class="col-4">
+				<div class="our">
+					<h3><span>our</span> players</h3>
+				</div>
+				<div class="all-team">
+					<a href="/team">View all team ›</a>
+				</div>
+			</div>
+			<div class="col-8">
+				<div class="slider1">
+				  <% @player_teams.order("created_at DESC").each do |player_team| %>
+					  <div class="slide_i col-4">
+					  		<% if player_team.avatar_file_name.nil? %>
+								<div>
+									<%= image_tag ("player.jpg"), :class => "plphforhome"%>
+								</div>	
+							<% else %>
+								<div>
+									<%= image_tag(player_team.avatar.url(:medium), :class => "plphforhome") rescue "-" %>
+								</div>
+							<% end %>
+					  	
+					  	<div class="player-name" style="height:97px;">
+					  		<a href="/team"><%= player_team.name rescue "-" %></a>
+					  		<p><%= player_team.position rescue "-" %></p>
+					  	</div>
+					  </div>
+	                <% end %>
+                </div>
+			</div>
+		</div>
+		
+	</div>
+	</section>
+	<!-- twiter, blog, table -->
+	<section id="ttb">
+		<div class="container">
+			<div class="col-4">
+				<div class="twiter">
+					<div class="tw-title"><h3>Fun Club Posts</h3></div>
+
+						<div class="fb-comments" data-href="https://www.facebook.com/pages/Rakhine-United-Football-Club/116855348487135" data-width="313" data-numposts="4" data-colorscheme="light">	
+						</div>
+                                                <div class="fb-like-box" data-href="https://www.facebook.com/pages/Rakhine-United-Football-Club/116855348487135" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="blog-s">
+					<div class="bl-title"><h3>Gallery &nbsp; <a href="/post">\ &nbsp; Open Gallery ›</a></h3></div>
+					<% @v_posts.each do |post| %>
+						<div class="s-post">
+							<div class="post-img">
+						  		<% if post.avatar_file_name.nil? %>
+									<div>
+										<%= image_tag ("notavalable.png"), :id => "footergallery" %>
+									</div>	
+								<% else %>
+									<div>
+										<%= image_tag post.avatar.url(:medium), :id => "footergallery" rescue "-" %>
+									</div>
+								<% end %>
+							</div>
+							<h3><%= link_to post.title[0,30], v_post_single_path(:id =>post.id) %></h3>
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="liga-t">
+					<div class="bu-title">
+					<h3>MYANMAR NATIONAL LEAGUE
+						<a  data-toggle="modal" data-target="#rufcstanding">
+   							 <img alt="showstanding"  src="/assets/eye-icon.png" >
+						</a>
+					</h3>
+
+					</div>
+
+						
+
+					<!-- Modal -->
+					<div class="modal fade" id="rufcstanding" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-dialog"  id="rufcstand">
+					    <div class="modal-content">
+		
+					      <div class="modal-body">
+					          <%= render 'standings/mystanding' %>
+					      </div>
+					    </div><!-- /.modal-content -->
+					  </div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
+
+
+					<table class="table-striped">
+						<tr class="t-h">
+							<td class="t-c">Pos</td>
+							<td>Club</td>
+							<td></td>
+							<td>Pld</td>
+							<td>Pts</td>
+						</tr>
+						<% @v_standings.each do |standing| %>
+						
+							<!-- standing -->
+							<tr style="color:#4c6d8e;" id="<%= standing.team_name1.gsub(/\s+/, "") %>">
+						     	<td class="t-c">1</td>
+							<td>
+								  <%= image_tag "team_logos/YangonUnitedFC.png" , :class =>"YangonUnitedFC1", :style => "display:none;",:id =>"img_stand" %>
+          <%= image_tag "team_logos/AyeyarwadyUnitedFC.png" , :class => "AyeyarwadyUnitedFC1", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/YadanarbonFC.png" , :class => "YadanarbonFC1" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/KBZFC.png" , :class => "KBZFC1" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ChinUnitedFC.png" , :class => "ChinUnitedFC1" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MagweFC.png" , :class => "MagweFC1"  , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/HantharwadyFC.png" , :class => "HantharwadyFC1" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MaNawMyayFC.png" , :class => "MaNawMyayFC1", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZwekapinUnitedFC.png" , :class => "ZwekapinUnitedFC1", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZeyarShweMyayFC.png" , :class =>"ZeyarShweMyayFC1", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/NayPyiTawFC.png" , :class => "NayPyiTawFC1", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/RakhineUnitedFC.png" , :class => "RakhineUnitedFC1" , :style => "display:none;", :id =>"img_stand" %>
+								</td>
+						        <td><%= standing.team_name1 rescue "-" %></td>
+						        <td><%= standing.pld1 rescue "-" %></td>
+						        <td><%= standing.pts1 rescue "-" %></td>
+						        
+						      </tr>
+
+						     <tr style="color:#4c6d8e;" id="<%= standing.team_name2.gsub(/\s+/, "") %>">
+						     	<td class="t-c">2</td>
+Ayeyawady United FC
+
+          <%= image_tag "team_logos/AyeyarwadyUnitedFC.png" , :class => "AyeyarwadyUnitedFC2", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/YadanarbonFC.png" , :class => "YadanarbonFC2" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/KBZFC.png" , :class => "KBZFC2" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ChinUnitedFC.png" , :class => "ChinUnitedFC2" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MagweFC.png" , :class => "MagweFC2"  , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/HantharwadyFC.png" , :class => "HantharwadyFC2" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MaNawMyayFC.png" , :class => "MaNawMyayFC2", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZwekapinUnitedFC.png" , :class => "ZwekapinUnitedFC2", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZeyarShweMyayFC.png" , :class =>"ZeyarShweMyayFC2", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/NayPyiTawFC.png" , :class => "NayPyiTawFC2", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/RakhineUnitedFC.png" , :class => "RakhineUnitedFC2" , :style => "display:none;", :id =>"img_stand" %>
+								</td>
+						        <td><%= standing.team_name2 rescue "-" %></td>
+						        <td><%= standing.pld2 rescue "-" %></td>
+						        <td><%= standing.pts2 rescue "-" %></td>
+						        
+						      </tr>
+
+						     <tr style="color:#4c6d8e;" id="<%= standing.team_name3.gsub(/\s+/, "") %>">
+						     	<td class="t-c">3</td>
+						     	<td> <%= image_tag "team_logos/YangonUnitedFC.png" , :class =>"YangonUnitedFC3", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/AyeyarwadyUnitedFC.png" , :class => "AyeyarwadyUnitedFC3", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/YadanarbonFC.png" , :class => "YadanarbonFC3" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/KBZFC.png" , :class => "KBZFC3" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ChinUnitedFC.png" , :class => "ChinUnitedFC3" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MagweFC.png" , :class => "MagweFC3"  , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/HantharwadyFC.png" , :class => "HantharwadyFC3" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MaNawMyayFC.png" , :class => "MaNawMyayFC3", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZwekapinUnitedFC.png" , :class => "ZwekapinUnitedFC3", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZeyarShweMyayFC.png" , :class =>"ZeyarShweMyayFC3", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/NayPyiTawFC.png" , :class => "NayPyiTawFC3", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/RakhineUnitedFC.png" , :class => "RakhineUnitedFC3" , :style => "display:none;", :id =>"img_stand" %>
+								</td>
+						        <td><%= standing.team_name3 rescue "-" %></td>
+						        <td><%= standing.pld3 rescue "-" %></td>
+						        <td><%= standing.pts3 rescue "-" %></td>
+						                
+						      </tr>
+
+						      <tr style="color:#4c6d8e;" id="<%= standing.team_name4.gsub(/\s+/, "") %>">
+						      	<td class="t-c">4</td>
+						      	<td><%= image_tag "team_logos/YangonUnitedFC.png" , :class =>"YangonUnitedFC4", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/AyeyarwadyUnitedFC.png" , :class => "AyeyarwadyUnitedFC4", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/YadanarbonFC.png" , :class => "YadanarbonFC4" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/KBZFC.png" , :class => "KBZFC4" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ChinUnitedFC.png" , :class => "ChinUnitedFC4" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MagweFC.png" , :class => "MagweFC4"  , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/HantharwadyFC.png" , :class => "HantharwadyFC4" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MaNawMyayFC.png" , :class => "MaNawMyayFC4", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZwekapinUnitedFC.png" , :class => "ZwekapinUnitedFC4", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZeyarShweMyayFC.png" , :class =>"ZeyarShweMyayFC4", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/NayPyiTawFC.png" , :class => "NayPyiTawFC4", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/RakhineUnitedFC.png" , :class => "RakhineUnitedFC4" , :style => "display:none;", :id =>"img_stand" %>
+								</td>
+						        <td><%= standing.team_name4 %></td>
+						        <td><%= standing.pld4 %></td>
+						        <td><%= standing.pts4 %></td>
+						                
+						      </tr>
+
+						      <tr style="color:#4c6d8e;" id="<%= standing.team_name5.gsub(/\s+/, "") %>">
+						      	<td class="t-c">5</td>
+						      	<td> <%= image_tag "team_logos/YangonUnitedFC.png" , :class =>"YangonUnitedFC5", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/AyeyarwadyUnitedFC.png" , :class => "AyeyarwadyUnitedFC5", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/YadanarbonFC.png" , :class => "YadanarbonFC5" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/KBZFC.png" , :class => "KBZFC5" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ChinUnitedFC.png" , :class => "ChinUnitedFC5" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MagweFC.png" , :class => "MagweFC5"  , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/HantharwadyFC.png" , :class => "HantharwadyFC5" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MaNawMyayFC.png" , :class => "MaNawMyayFC5", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZwekapinUnitedFC.png" , :class => "ZwekapinUnitedFC5", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZeyarShweMyayFC.png" , :class =>"ZeyarShweMyayFC5", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/NayPyiTawFC.png" , :class => "NayPyiTawFC5", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/RakhineUnitedFC.png" , :class => "RakhineUnitedFC5" , :style => "display:none;", :id =>"img_stand" %>
+								</td>
+						        <td><%= standing.team_name5 rescue "-" %></td>
+						        <td><%= standing.pld5 rescue "-" %></td>
+						        <td><%= standing.pts5 rescue "-" %></td>
+						                
+						      </tr>
+
+
+						      <tr style="color:#4c6d8e;" id="<%= standing.team_name6.gsub(/\s+/, "") %>">
+						        <td class="t-c">6</td>
+						        <td> <%= image_tag "team_logos/YangonUnitedFC.png" , :class =>"YangonUnitedFC6", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/AyeyarwadyUnitedFC.png" , :class => "AyeyarwadyUnitedFC6", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/YadanarbonFC.png" , :class => "YadanarbonFC6" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/KBZFC.png" , :class => "KBZFC6" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ChinUnitedFC.png" , :class => "ChinUnitedFC6" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MagweFC.png" , :class => "MagweFC6"  , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/HantharwadyFC.png" , :class => "HantharwadyFC6" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MaNawMyayFC.png" , :class => "MaNawMyayFC6", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZwekapinUnitedFC.png" , :class => "ZwekapinUnitedFC6", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZeyarShweMyayFC.png" , :class =>"ZeyarShweMyayFC6", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/NayPyiTawFC.png" , :class => "NayPyiTawFC6", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/RakhineUnitedFC.png" , :class => "RakhineUnitedFC6" , :style => "display:none;", :id =>"img_stand" %>
+								</td>
+						        <td><%= standing.team_name6 rescue "-" %></td>
+						        <td><%= standing.pld6 rescue "-" %></td>
+						        <td><%= standing.pts6 rescue "-" %></td>
+						                
+						      </tr>
+
+						      <tr style="color:#4c6d8e;" id="<%= standing.team_name7.gsub(/\s+/, "") %>">
+						       <td class="t-c">7</td>
+						       <td> <%= image_tag "team_logos/YangonUnitedFC.png" , :class =>"YangonUnitedFC7", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/AyeyarwadyUnitedFC.png" , :class => "AyeyarwadyUnitedFC7", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/YadanarbonFC.png" , :class => "YadanarbonFC7" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/KBZFC.png" , :class => "KBZFC7" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ChinUnitedFC.png" , :class => "ChinUnitedFC7" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MagweFC.png" , :class => "MagweFC7"  , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/HantharwadyFC.png" , :class => "HantharwadyFC7" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MaNawMyayFC.png" , :class => "MaNawMyayFC7", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZwekapinUnitedFC.png" , :class => "ZwekapinUnitedFC7", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZeyarShweMyayFC.png" , :class =>"ZeyarShweMyayFC7", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/NayPyiTawFC.png" , :class => "NayPyiTawFC7", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/RakhineUnitedFC.png" , :class => "RakhineUnitedFC7" , :style => "display:none;", :id =>"img_stand" %>
+								</td>
+						        <td><%= standing.team_name7 rescue "-" %></td>
+						        <td><%= standing.pld7 rescue "-" %></td>
+						        <td><%= standing.pts7 rescue "-" %></td>        
+						      </tr>
+
+						      <tr style="color:#4c6d8e;" id="<%= standing.team_name8.gsub(/\s+/, "") %>">
+						        <td class="t-c">8</td>
+						        <td> <%= image_tag "team_logos/YangonUnitedFC.png" , :class =>"YangonUnitedFC8", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/AyeyarwadyUnitedFC.png" , :class => "AyeyarwadyUnitedFC8", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/YadanarbonFC.png" , :class => "YadanarbonFC8" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/KBZFC.png" , :class => "KBZFC8" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ChinUnitedFC.png" , :class => "ChinUnitedFC8" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MagweFC.png" , :class => "MagweFC8"  , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/HantharwadyFC.png" , :class => "HantharwadyFC8" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MaNawMyayFC.png" , :class => "MaNawMyayFC8", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZwekapinUnitedFC.png" , :class => "ZwekapinUnitedFC8", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZeyarShweMyayFC.png" , :class =>"ZeyarShweMyayFC8", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/NayPyiTawFC.png" , :class => "NayPyiTawFC8", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/RakhineUnitedFC.png" , :class => "RakhineUnitedFC8" , :style => "display:none;", :id =>"img_stand" %>
+								</td>
+						        <td><%= standing.team_name8 rescue "-" %></td>
+						        <td><%= standing.pld8 rescue "-" %></td>
+						        <td><%= standing.pts8 rescue "-" %></td>
+						                
+						      </tr>
+
+						      <tr style="color:#4c6d8e;" id="<%= standing.team_name9.gsub(/\s+/, "") %>">
+						      	<td class="t-c">9</td>
+						      	<td> <%= image_tag "team_logos/YangonUnitedFC.png" , :class =>"YangonUnitedFC9", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/AyeyarwadyUnitedFC.png" , :class => "AyeyarwadyUnitedFC9", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/YadanarbonFC.png" , :class => "YadanarbonFC9" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/KBZFC.png" , :class => "KBZFC9" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ChinUnitedFC.png" , :class => "ChinUnitedFC9" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MagweFC.png" , :class => "MagweFC9"  , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/HantharwadyFC.png" , :class => "HantharwadyFC9" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MaNawMyayFC.png" , :class => "MaNawMyayFC9", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZwekapinUnitedFC.png" , :class => "ZwekapinUnitedFC9", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZeyarShweMyayFC.png" , :class =>"ZeyarShweMyayFC9", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/NayPyiTawFC.png" , :class => "NayPyiTawFC9", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/RakhineUnitedFC.png" , :class => "RakhineUnitedFC9" , :style => "display:none;", :id =>"img_stand" %>
+								</td>
+						        <td><%= standing.team_name9 rescue "-" %></td>
+						        <td><%= standing.pld9 rescue "-" %></td>
+						        <td><%= standing.pts9 rescue "-" %></td>
+						                
+						      </tr>
+
+						      <tr style="color:#4c6d8e;" id="<%= standing.team_name10.gsub(/\s+/, "") %>">
+						      	<td class="t-c">10</td>
+						      	<td>  <%= image_tag "team_logos/YangonUnitedFC.png" , :class =>"YangonUnitedFC10", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/AyeyarwadyUnitedFC.png" , :class => "AyeyarwadyUnitedFC10", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/YadanarbonFC.png" , :class => "YadanarbonFC10" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/KBZFC.png" , :class => "KBZFC10" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ChinUnitedFC.png" , :class => "ChinUnitedFC10" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MagweFC.png" , :class => "MagweFC10"  , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/HantharwadyFC.png" , :class => "HantharwadyFC10" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MaNawMyayFC.png" , :class => "MaNawMyayFC10", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZwekapinUnitedFC.png" , :class => "ZwekapinUnitedFC10", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZeyarShweMyayFC.png" , :class =>"ZeyarShweMyayFC10", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/NayPyiTawFC.png" , :class => "NayPyiTawFC10", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/RakhineUnitedFC.png" , :class => "RakhineUnitedFC10" , :style => "display:none;", :id =>"img_stand" %>
+								</td>
+						        <td><%= standing.team_name10 rescue "-" %></td>
+						        <td><%= standing.pld10 rescue "-" %></td>
+						        <td><%= standing.pts10 rescue "-" %></td>
+						                
+						      </tr>
+
+						      <tr style="color:#4c6d8e;" id="<%= standing.team_name11.gsub(/\s+/, "") %>">
+						      	<td class="t-c">11</td>
+						      	<td>  <%= image_tag "team_logos/YangonUnitedFC.png" , :class =>"YangonUnitedFC11", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/AyeyarwadyUnitedFC.png" , :class => "AyeyarwadyUnitedFC11", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/YadanarbonFC.png" , :class => "YadanarbonFC11" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/KBZFC.png" , :class => "KBZFC11" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ChinUnitedFC.png" , :class => "ChinUnitedFC11" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MagweFC.png" , :class => "MagweFC11"  , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/HantharwadyFC.png" , :class => "HantharwadyFC11" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MaNawMyayFC.png" , :class => "MaNawMyayFC11", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZwekapinUnitedFC.png" , :class => "ZwekapinUnitedFC11", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZeyarShweMyayFC.png" , :class =>"ZeyarShweMyayFC11", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/NayPyiTawFC.png" , :class => "NayPyiTawFC11", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/RakhineUnitedFC.png" , :class => "RakhineUnitedFC11" , :style => "display:none;", :id =>"img_stand" %>
+								</td>
+						        <td><%= standing.team_name11 rescue "-" %></td>
+						        <td><%= standing.pld11 rescue "-" %></td>
+						        <td><%= standing.pts11 rescue "-" %></td>
+						      </tr>
+
+						      <tr style="color:#4c6d8e;" id="<%= standing.team_name12.gsub(/\s+/, "") %>">
+						      	<td class="t-c">12</td>
+						      	<td> <%= image_tag "team_logos/YangonUnitedFC.png" , :class =>"YangonUnitedFC12", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/AyeyarwadyUnitedFC.png" , :class => "AyeyarwadyUnitedFC12", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/YadanarbonFC.png" , :class => "YadanarbonFC12" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/KBZFC.png" , :class => "KBZFC12" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ChinUnitedFC.png" , :class => "ChinUnitedFC12" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MagweFC.png" , :class => "MagweFC12"  , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/HantharwadyFC.png" , :class => "HantharwadyFC12" , :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/MaNawMyayFC.png" , :class => "MaNawMyayFC12", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZwekapinUnitedFC.png" , :class => "ZwekapinUnitedFC12", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/ZeyarShweMyayFC.png" , :class =>"ZeyarShweMyayFC12", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/NayPyiTawFC.png" , :class => "NayPyiTawFC12", :style => "display:none;", :id =>"img_stand" %>
+          <%= image_tag "team_logos/RakhineUnitedFC.png" , :class => "RakhineUnitedFC12" , :style => "display:none;", :id =>"img_stand" %>
+								</td>
+						        <td><%= standing.team_name12 rescue "-" %></td>
+						        <td><%= standing.pld12 rescue "-" %></td>
+						        <td><%= standing.pts12 rescue "-" %></td>
+						      </tr>
+							
+
+							
+
+						<% end %>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	<section id="partner">
+	<div class="container">
+       	<div class="p-l">
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor22.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor4.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor22.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor4.jpg") %></div>
+		</div>
+	</div>
+	</section>
+
+
+	<style>
+	#jw_player{
+  
+		height:329px;
+		width:650px;
+	}
+
+	.commentaschange{
+		color: white;
+	}
+
+
+
+	</style>
+	<script>
+
+
+		$( document ).ready(function() {
+   			  $(".postText").attr('style', 'color: #999999;');
+		});
+	</script>

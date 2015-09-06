@@ -1,0 +1,36 @@
+<%= form_for @post, :html => {:class =>"pure-form pure-form-aligned", :multipart => true } do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <fieldset>
+        <div class="pure-control-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, :placeholder => "Title"  %>
+        </div>
+        <div class="pure-control-group">
+          <%= f.label :content %>
+          <%= f.text_area :post_data, :placeholder => "Content" , :rows => 10 %>
+        </div>
+        <div class="pure-control-group">
+          <%= f.label :writer %>
+          <%= f.text_field :writer, :placeholder => "Writer"  %>
+        </div>
+        <div class="pure-control-group">
+          <%= f.label :image_upload %>
+          <%= f.file_field :avatar %>
+        </div>
+        <div class="pure-controls">
+          <button type="submit" class="pure-button pure-button-primary">Submit</button>
+        </div>
+    </fieldset>
+
+<% end %>

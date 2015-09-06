@@ -1,0 +1,24 @@
+<div id="myinfo">
+ <div class="pure-menu pure-menu-open" >
+                    <a class="pure-menu-heading">Video
+
+                    </a>
+                    <a class="pure-menu-heading">
+                     <!-- video wil come here -->
+                    </a>
+                    <ul>
+                      
+                        <li><a>Name: <%= @video.name.gsub('/system/videos/videos/', '') %></a></li>
+                        <li><p id="cusp">Desc: <%= @video.desc.gsub('{"desc"=>"', '').gsub('"}', '') %></p></li>
+                        <li><a><%= video_player({:file => @video.video_file_name}) %></a></li>
+                    </ul>
+
+</div>
+
+<br/>
+<%= link_to 'Edit',  edit_video_path(@video), :class=>"pure-button pure-button-primary"  %> 
+
+<%= link_to 'Back',  videos_path, :class=>"pure-button pure-button-primary" %>
+</div>
+
+

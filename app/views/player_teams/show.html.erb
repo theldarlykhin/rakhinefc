@@ -1,0 +1,29 @@
+<div id="myinfo">
+ <div class="pure-menu pure-menu-open" >
+                    <a class="pure-menu-heading">Player Profile
+
+                    </a>
+                    <a class="pure-menu-heading">
+                       <% if @player_team.avatar_file_name.nil?%>
+                            <%= image_tag "player.jpg", :id =>"play_pic" %>
+                         <% else %>
+                             <%= image_tag @player_team.avatar.url(:medium) %>
+                         <% end %>
+                    </a>
+                    <ul>
+                      
+                        <li><a>Name: <%= @player_team.name %></a></li>
+                        <li><a>Position: <%= @player_team.position %></a></li>
+                        <li><p id="cusp">Description:<%= @player_team.desc %></p></li>
+                        
+                    </ul>
+
+</div>
+
+<br/>
+<%= link_to 'Edit',  edit_player_team_path(@player_team), :class=>"pure-button pure-button-primary"  %> 
+
+<%= link_to 'Back',  player_teams_path, :class=>"pure-button pure-button-primary" %>
+</div>
+
+

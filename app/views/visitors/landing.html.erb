@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Rakhine FC</title>
+  
+  <link rel="shortcut icon" href="<%= asset_path 'fav.png'%>">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  
+
+  <%= javascript_include_tag "modernizr-2.5.3.min.js" %>
+  
+    <!-- Libs -->
+    <%= javascript_include_tag "jquery-1.10.2.min.js" %>
+    <%= javascript_include_tag "jquery.flexslider-min.js" %>
+	<%= javascript_include_tag "jquery-ui.js" %>
+	<%= javascript_include_tag "jquery.bxslider.min.js" %>
+    <!-- Custom -->
+    <%= javascript_include_tag "scripts.js" %>
+  <%= javascript_include_tag "bootstrap.js" %>
+      
+  <%= csrf_meta_tags %>
+
+    <!-- Semantic HTML5 Support on old IE -->
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body style="min-height: 100%;">
+    <!-- Header Section. If need a menu section, use tag: <nav> -->
+
+    <!-- Content Section. If need sidebars use the tag: <aside>. If articles use tag: <article> -->
+    <section id="m-a-n" class="land_man">
+     <div class="container">
+		<div id="teaser_land">
+		<%= image_tag("footer_logo.png") %>
+		<h2 style="padding-top:5px;">Welcome From
+			<span style="padding:10px;">Rakhine United Football Club
+			</span>
+		</h2>
+		<a href="/index" class="btn btn-red"> >> Enter site << </a>
+	    </div>
+	  </div>
+	</section>
+	<!-- section for teaser -->
+	
+	
+
+	<section id="partner" class="land_partner">
+	<div class="container">
+		<div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+		</div>
+	</div>
+	</section>
+    <!-- Footer Section -->
+    
+
+    <!-- Libs -->
+    <script src="js/libs/jquery-1.10.2.min.js"></script>
+    <script type='text/javascript' src='js/libs/jquery.flexslider-min.js'></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/jquery.bxslider.min.js"></script>
+
+    <!-- Custom -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>
+
+

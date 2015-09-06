@@ -1,0 +1,35 @@
+<table class="pure-table pure-table-bordered" id="mytable">
+  <thead>
+    <tr id="mythead">
+      <th colspan="4" ><a>MNLteam</a> </th>
+    </tr>
+    <tr id="mythead">
+      <th>Name</th>
+      <th colspan="3">Can Add New Team
+      <%= link_to 'Here!',  new_mnlteam_path, :class=>"pure-button pure-button-primary"  %> 
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mnlteams.each do |mnlteam| %>
+      <tr>
+        <td><%= mnlteam.name %></td>
+        <td><%= link_to 'Show', mnlteam ,:class=>"button-error pure-button" %>
+        </td>
+        <td><%= link_to 'Edit', edit_mnlteam_path(mnlteam),:class=>"button-error pure-button" %></td>
+        <td><%= link_to 'Destroy', mnlteam, method: :delete, data: { confirm: 'Are you sure?' },:class=>"button-error pure-button" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<div class="bpaginate">
+    <%=  will_paginate @v_posts %>
+</div>
+
+
+

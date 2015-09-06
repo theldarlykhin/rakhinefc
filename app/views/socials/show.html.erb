@@ -1,0 +1,30 @@
+
+
+<div id="myinfo">
+ <div class="pure-menu pure-menu-open" >
+                    <a class="pure-menu-heading">Social Info
+
+                    </a>
+                    <a class="pure-menu-heading">
+                      <% if @social.avatar_file_name.nil?%>
+                        <%= image_tag "player.jpg", :id =>"play_pic" %>
+                     <% else %>
+                         <%= image_tag @social.avatar.url(:medium) %>
+                     <% end %>
+                    </a>
+                    <ul>
+                      
+                        <li><a>Name: <%= @social.title%></a></li>
+                        <li><p id="cusp">Content: <%= @social.data %></p></li>
+                        
+                    </ul>
+
+</div>
+
+<br/>
+<%= link_to 'Edit',  edit_social_path(@social), :class=>"pure-button pure-button-primary"  %> 
+
+<%= link_to 'Back',  socials_path, :class=>"pure-button pure-button-primary" %>
+</div>
+
+

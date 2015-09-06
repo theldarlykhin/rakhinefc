@@ -1,0 +1,76 @@
+<section id="bc-t">
+		<div class="container">
+		<ul class="breadcrumb1">
+			<li><a href="/index">Homepage</a></li><li><span class="sep">   /   </span></li><li><a href="/gallery">Gallery</a></li>
+		</ul>
+		
+		<h1 class="blog-title">Gallery</h1>
+		</div>
+	</section><br/>
+    <!-- Content Section. If need sidebars use the tag: <aside>. If articles use tag: <article> -->
+    <section id="gallery-grid">
+		<div class="container">
+			
+			<!-- blog menu end -->
+			<!-- gallery -->
+			<div class="gallery-item isotope js-isotope" data-isotope-options='{ "itemSelector": ".gal", "masonry": { "columnWidth": ".col-3" } }'>
+				<% @v_galleries.order("created_at DESC").each do |gallery| %>
+					<div class="gal col-6">
+						<a href="#" data-toggle="modal" data-target="#myModal-<%= gallery.id %>">
+							  <%= image_tag(gallery.avatar.url(:medium), :class => "glphoto") rescue "-" %>
+							</a> 
+							<!-- Modal -->
+							<div class="modal fade" id="myModal-<%= gallery.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+				    	
+							        	<%= image_tag(gallery.avatar.url(:medium), :id => gallery.id, :class => "glphoto") rescue "-" %>
+							        <p style="align:justify;color:black;text-align:center;font-size:1.5em;"><%= gallery.name%></p>
+							     	<p style="align:justify;color:black;text-align:center;"><%= gallery.desc rescue "-" %></p>
+							    </div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->
+					</div>
+				<% end %>
+				<% @v_posts.order("created_at DESC").each do |post| %>
+					<div class="gal col-6">
+						<a href="#" data-toggle="modal" data-target="#myModal-<%= post.id %>" class="glphoto">
+							  <%= image_tag(post.avatar.url(:medium), :class => "glphoto") rescue "-" %>
+						</a> 
+							<!-- Modal -->
+						<div class="modal fade" id="myModal-<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							<div class="modal-content">
+							    <%= image_tag(post.avatar.url(:medium), :id => post.id, :class => "glphoto")  rescue "-" %>
+							     <p style="align:justify;color:black;text-align:center;font-size:1.5em;"><%= post.title rescue "-" %></p>
+							     <p style="align:justify;color:black;text-align:center;"><%= post.post_data rescue "-" %></p>
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
+					</div>
+				<% end %>
+			</div>
+			<!-- PAGINATION -->
+			<div class="pagination">
+				<% if (@v_gs.count > @v_ps.count) %>
+                    <%=  will_paginate @v_galleries %>
+                <% else %>
+                    <%=  will_paginate @v_posts %>
+                <% end %>
+				
+			</div>
+
+		</div>
+	</section>
+	<section id="partner">
+	<div class="container">
+       	<div class="p-l">
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+		</div>
+	</div>
+	</section>

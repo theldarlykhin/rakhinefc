@@ -1,0 +1,52 @@
+<section id="bc-t">
+		<div class="container">
+		<ul class="breadcrumb1">
+			<li><a href="/index">Homepage</a></li><li><span class="sep">   /   </span></li><li><a href="/post">Posts</a></li>
+		</ul>
+		
+		<h1 class="blog-title">Posts</h1>
+		</div>
+	</section><br/>
+    <!-- Content Section. If need sidebars use the tag: <aside>. If articles use tag: <article> -->
+    <section id="blog-single">
+		<div class="container">
+			<!-- BLOG POST SINGLE -->
+			<article class="blog-post">
+
+					<div class="col-3">
+						<aside class="sidebar-right">
+							<div class="a-name">
+								<h3><%= @posts.writer rescue "-"  %></h3>
+							</div>
+							<ul class="date-a">
+								<li style="color:#4c6d8e;"><span>Date:</span><%= @posts.created_at.strftime("%d %b %Y") rescue "-"  %></li>
+							</ul>			
+						</aside>
+						
+					</div>
+					<div class="col-9">
+						<div class="post-title">
+							<h1><span><%= @posts.title  rescue "-" %></h1>
+						</div>
+						<div class="post-content">
+							<%= @posts.post_data  rescue "-" %>
+						</div><!-- POST CONTENT END -->
+					</div>
+
+			</article>
+			
+		</div>
+	</section>
+	
+	<section id="partner">
+	<div class="container">
+       	<div class="p-l">
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+		</div>
+	</div>
+	</section>

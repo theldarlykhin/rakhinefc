@@ -1,0 +1,17 @@
+
+    <%= form_tag({:action => "uploadFile"},:multipart => true) do %>
+        
+
+ 		<fieldset>
+            <p style="color:red;">Only accept flv format.</p>
+            <div class="pure-control-group">
+            <%= file_field 'upload', 'rfcvideo' %><br/>
+            </div>
+            <div class="pure-control-group" style="padding-top:20px;">
+            <%= text_area 'desc', 'desc'  %><br/>
+            </div>
+            <div class="pure-controls" style="padding-top:20px;">
+            <%= submit_tag "Upload video", :class =>"pure-button pure-button-primary" %>
+            </div>
+		</fieldset>
+    <% end %>

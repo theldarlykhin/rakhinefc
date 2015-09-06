@@ -1,0 +1,26 @@
+
+<div id="myinfo">
+ <div class="pure-menu pure-menu-open">
+                    <a class="pure-menu-heading">Gallery Info
+
+                    </a>
+                    <a class="pure-menu-heading">
+                        <% if @gallery.avatar_file_name.nil?%>
+                            <%= image_tag "player.jpg", :id =>"play_pic" %>
+                        <% else %>
+                            <%= image_tag @gallery.avatar.url(:medium) %>
+                        <% end %>
+                    </a>
+                    <ul>
+                        <li><a>Title: <%= @gallery.name %></a></li>
+                        <li><p id="cusp">Desc: <%= @gallery.desc %></p></li>
+                        
+                    </ul>
+
+</div>
+
+<br/>
+<%= link_to 'Edit',  edit_gallery_path(@gallery), :class=>"pure-button pure-button-primary"  %> 
+
+<%= link_to 'Back',  galleries_path, :class=>"pure-button pure-button-primary" %>
+</div>

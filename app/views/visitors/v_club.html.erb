@@ -1,0 +1,60 @@
+ <section id="bc-t">
+		<div class="container">
+		<ul class="breadcrumb1">
+			<li><a href="/index">Homepage</a></li><li><span class="sep">   /   </span></li><li><a href="/club">Club</a></li>
+		</ul>
+		
+		<h1 class="blog-title">Club</h1>
+		</div>
+	</section><br/>
+    <section id="club">
+		<div class="container">
+			<!-- POST -->
+			<article class="club-post">
+				<div class="club-content">
+					<div class="img-wrap col-3"><%= image_tag("uzawminthein.jpg") %>
+						<div class="bot-name">
+						<h3>Zaw Min Thein</h3>
+						<span>Club president</span>
+						</div>
+					</div>
+					<p class="col-9">about club president,about club presidentabout club presidentabout club presidentabout club presidentabout club presidentabout club presidentabout club presidentabout club presidentabout club presidentabout club president</p>
+					<%= image_tag("thuwanastadium.JPG") %>
+				<!-- TABS -->
+					<div id="tab" class="tabs">
+						<ul class="clearfix">
+            <li><a href="#section-1" >Officials</a></li>
+			</ul>
+			
+			
+			<div id="section-1" class="tab-content ">
+				<% @clubs.order("created_at DESC").each do |club| %>
+					<div class="col-4 margin-10">
+						<div class="col-3"><%= image_tag(club.avatar.url(:thumb), :class => "dirphoto") rescue "-" %></div>
+						<div class="col-9 dir-n" id="dirname"><%= club.name %><span><%= club.position rescue "-" %></span></div>
+					</div>
+				<% end %>
+				
+			</div>
+					</div>
+				
+				
+				</div>
+			</article>
+			
+		</div>
+	</section>
+
+
+<section id="partner">
+	<div class="container">
+       	<div class="p-l">
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+		</div>
+	</div>
+	</section>

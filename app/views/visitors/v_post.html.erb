@@ -1,0 +1,64 @@
+<section id="bc-t">
+		<div class="container">
+		<ul class="breadcrumb1">
+			<li><a href="/index">Homepage</a></li><li><span class="sep">   /   </span></li><li><a href="/post">News</a></li>
+		</ul>
+		
+		<h1 class="blog-title">News</h1>
+		</div>
+	</section><br/>
+<section id="blog-grid">
+		<div class="container">
+			
+			<% @v_posts.order("created_at DESC").each do |post| %>
+				<article class="blog-item">
+					<div class="col-6">
+						<div class="b-img-s">
+								<% if post.avatar_file_name.nil? %>
+									<div>
+										<%= link_to (image_tag ("notavalable.png"), 
+										:class => "post_img", :style => "height:263px;"), "post_single"   %>
+									</div>	
+								<% else %>
+									<div>
+										<%= link_to (image_tag (post.avatar.url(:medium)), 
+										:class => "post_img",:style => "height:263px;"), " post_single"  rescue "-"  %>
+									</div>
+								<% end %>
+						</div>
+					</div>
+					<div class="col-6" id="post_data">
+						<div class="b-desc arr-l" style="position:relative;left:10px;">
+							<h3><%= link_to post.title, v_post_single_path(:id =>post.id) %>
+							</h3>
+							<p class="myp"><%= post.post_data rescue "-"  %></p>
+							<div class="date-i" style="color:#617e94;">
+								<div id="pdate">Posted Date <%= post.created_at.strftime("%d %b") rescue "-"  %></div>
+								<div id="pdate">Posted By <%= post.writer rescue "-"  %></div>
+							</div>
+						</div>
+					</div>
+				</article>
+
+			<% end %>
+			<!-- PAGINATION -->
+				<!-- just copy under three line for pagiantion you want -->
+				<div class="pagination">
+						<%=  will_paginate @v_posts %>
+				</div>
+
+		</div>
+	</section>
+
+	<section id="partner">
+	<div class="container">
+       	<div class="p-l">
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+		</div>
+	</div>
+	</section>

@@ -1,0 +1,23 @@
+<div style="height:451px;">
+<div class="pure-u-1-4"></div>
+<div class="pure-u-1-2">
+
+
+
+ <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "pure-form" }) do  |f| %>
+
+<%= image_tag("logo.png", :style => "position:relative;left:50px;")  %>
+  <h1>Rakhine United FC</h1>
+
+  <fieldset class="pure-group">
+    <%= f.email_field :email, autofocus: true, :class =>"pure-input-1-2" %>
+    <%= f.password_field :password, autocomplete: "off", :class =>"pure-input-1-2" %>
+  </fieldset>
+
+  <%= f.submit "Log in" ,:class =>"pure-button pure-input-1-2 pure-button-primary", :style =>"background:#CC0000;" %>
+
+<% end %>
+</div>
+<div class="pure-u-1-5"></div>
+</div>
+

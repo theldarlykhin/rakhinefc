@@ -1,0 +1,121 @@
+	<section id="bc-t">
+		<div class="container">
+		<ul class="breadcrumb1">
+			<li><a href="/index">Homepage</a></li><li><span class="sep">   /   </span></li><li><a href="/team">Team</a></li>
+		</ul>
+		
+		<h1 class="blog-title">Team</h1>
+		</div>
+	</section><br/>
+    <!-- Content Section. If need sidebars use the tag: <aside>. If articles use tag: <article> -->
+    <section id="club">
+		<div class="container">
+			<!-- POST -->
+			<article class="teamd">
+				<div class="col-6">
+
+					<div class="tpp"><%= image_tag("UWinTin.jpg", :style => "width:470px;height:269px;") %></div>
+
+				</div>
+				<div class="col-6">
+					<div class="tpi">
+						<h2>Mr.Win Tin</h2>
+						<span>Head coach</span>
+						<p>about head coach will come here about head coach will come here about head coach will come here</p>
+					</div>
+				</div>
+			</article>
+			
+			<div class="team-pl">
+			<% @player_teams.each do |player_team| %>
+
+					<div class="col-2" >
+
+						<div id="myplayer">
+
+								<% if player_team.avatar_file_name.nil? %>
+									<div>
+										<%= image_tag ("player.jpg") %>
+									</div>	
+								<% else %>
+									<div>
+										<%= image_tag(player_team.avatar.url(:medium), :id => player_team.position,:class => "plphoto")  rescue "-" %>
+									</div>
+								<% end %>
+
+
+						</div>
+
+						<div class="player-name" style="height:100px;">
+
+							<!-- Button trigger modal -->
+							<a href="#" data-toggle="modal" data-target="#myModal-<%= player_team.name.gsub(/\s+/, "") %>" class="plname">
+							  <%= player_team.name  rescue "-" %>
+							</a> 
+
+							<!-- Modal -->
+							<div class="modal fade" id="myModal-<%= player_team.name.gsub(/\s+/, "") %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							        <h4 class="modal-title" id="myModalLabel" style="color:#0f314d;"><%= player_team.name rescue "-"  %></h4>
+							      </div>
+							      <div class="modal-body">
+									<div id="plphotodetail">
+							        	<% if player_team.avatar_file_name.nil? %>
+											<div>
+												<%= image_tag ("player.jpg") %>
+											</div>	
+										<% else %>
+											<div>
+												<%= image_tag(player_team.avatar.url(:medium), :id => player_team.position,:class => "plphoto")  rescue "-" %>
+											</div>
+										<% end %>
+							        </div>
+							        <p style="align:justify;"><%= player_team.desc rescue "-"  %></p>
+
+							      </div>
+							        <div class="modal-footer">
+							        </div>
+							    </div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->
+
+							<p><%= player_team.position rescue "-"  %></p>
+						</div>
+					</div>
+			<% end %>
+			</div>
+		</div>
+	</section>
+	<section>
+	<div class="container">
+		<div class="big_crsl">
+			<div class="ftitle"><h2>Season 2014-2015 <span>first team</span></h2></div>
+			<div class="slider2">
+			 <div class="slide"><%= image_tag("first-team.jpg") %></div>
+			 <div class="slide"><%= image_tag("first-team.jpg") %></div>
+			 
+			</div>
+		</div>
+	</div>
+	</section>
+	<section>
+		<div class="container">
+			
+		</div>
+	</section>
+	
+<section id="partner">
+	<div class="container">
+       	<div class="p-l">
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+		</div>
+	</div>
+	</section>

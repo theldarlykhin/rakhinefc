@@ -1,0 +1,55 @@
+
+
+
+<section id="bc-t">
+		<div class="container">
+		<ul class="breadcrumb1">
+			<li><a href="/index">Homepage</a></li><li><span class="sep">   /   </span></li><li><a href="/video">Video</a></li>
+		</ul>
+		
+		<h1 class="blog-title">Single Video</h1>
+		</div>
+	</section><br/>
+
+
+    <section id="blog-grid">
+		<div class="container">
+			
+
+			<article class="video-item col-6" style="position:relative;left:200px;">
+					<div class="video-hold" >
+						<%= video_player({:file => @video.video_file_name})  rescue "-" %>
+					</div>
+					<div class="video-title">
+						<h3><%= @video.name.gsub('/system/videos/videos/', '')  rescue "-" %></h3>
+						<p>Highlight: <%= @video.desc.gsub('{"desc"=>"', '').gsub('"}', '')  rescue "-" %></p>
+					</div>
+			</article>
+
+			<!-- PAGINATION -->
+			
+		</div>
+	</section>
+
+	
+	<section id="partner">
+	<div class="container">
+       	<div class="p-l">
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+			<div class="col-2"><%= image_tag("sponsor.jpg") %></div>
+		</div>
+	</div>
+	</section>
+
+
+	<style>
+	#jw_player{
+  
+		height:315px;
+		width:480px;
+	}
+	</style>

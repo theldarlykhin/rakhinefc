@@ -1,0 +1,27 @@
+<%= form_for @mnlteam, :html => {:class =>"pure-form pure-form-aligned", :multipart => true } do |f| %>
+  <% if @mnlteam.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mnlteam.errors.count, "error") %> prohibited this mnlteam from being saved:</h2>
+
+      <ul>
+      <% @mnlteam.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <fieldset>
+      <div class="pure-control-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, :placeholder => "Name"  %>
+      </div>
+      <div class="pure-control-group">
+        <%= f.label :image_upload %>
+        <%= f.file_field :avatar %>
+      </div>
+      <div class="pure-controls">
+        <button type="submit" class="pure-button pure-button-primary">Submit</button>
+      </div>
+    </fieldset>
+    <% end %>

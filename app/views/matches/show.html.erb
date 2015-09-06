@@ -1,0 +1,43 @@
+<div id="myinfo">
+ <div class="pure-menu pure-menu-open" >
+                    <a class="pure-menu-heading">Match Info
+
+                    </a>
+                    <a class="pure-menu-heading">
+                      <% @mnlteams.each do |mnlteam| %>
+                        <span id="<%= mnlteam.name.gsub(/\s+/, "") %>-avatar" style="display:none;">
+                         <%= image_tag mnlteam.avatar.url(:medium), :style => "height:75px;" %>
+                        </span>
+                      <% end %>
+                    </a>
+                    <ul>
+                        <li>
+                          <a><%= @match.match_number %></a>
+                        </li>
+                        <li>
+                          <a>Name: <%= @match.team1 %> Vs <%= @match.team2 %></a>
+                        </li>
+                         <li><a>League: <%= @match.league %></a></li>
+                        <li><a>Time/date:  <%= @match.time %> <%= @match.date.strftime("%d/%b/%Y") rescue "-" %></a></li>
+                         <li><a>Stadium: <%= @match.stadium %></a></li>
+                         <li><a><%= @match.goal1 %> - <%= @match.goal2 %></a></li>
+                    </ul>
+
+</div>
+
+<br/>
+<%= link_to 'Edit',  edit_match_path(@match), :class=>"pure-button pure-button-primary"  %> 
+
+<%= link_to 'Back',  matches_path, :class=>"pure-button pure-button-primary" %>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+$("<%= '#'+@match.team1.gsub(/\s+/, "")+'-avatar' rescue "-" %>").show();
+$("<%= '#'+@match.team2.gsub(/\s+/, "")+'-avatar' rescue "-" %>").show();
+
+
+</script>

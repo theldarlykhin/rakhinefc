@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team1: MyString
+  team2: MyString
+  time: MyString
+  stadium: MyString
+  goal1: MyString
+  goal2: MyString
+
+two:
+  team1: MyString
+  team2: MyString
+  time: MyString
+  stadium: MyString
+  goal1: MyString
+  goal2: MyString
